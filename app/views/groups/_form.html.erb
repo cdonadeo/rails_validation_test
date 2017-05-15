@@ -1,0 +1,23 @@
+<%= form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% @group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      <p>If Rails is working as documented, the update action returns false and you see this message because the join model won't ever pass validation.  Unfortunately, <tt>update</tt> is raising an exception instead of returning false in this controller, so you'll never see this message in your browser.</p>
+    </div>
+  <% end %>
+
+    <div>
+      <%= f.label :things_ids, 'Things' %><br>
+      <%= f.collection_select :thing_ids, Thing.order(:id), :id, :to_s, {}, { multiple: true } %>
+    </div>
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

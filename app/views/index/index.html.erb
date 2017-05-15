@@ -1,0 +1,17 @@
+<h1>Things <small><%= link_to 'Add new thing', new_thing_path %></small></h1>
+<ul>
+  <% Thing.all.each do |thing| %>
+      <li>
+        <%= link_to thing, thing %>
+      </li>
+  <% end %>
+</ul>
+
+<h1>Groups <small><%= link_to 'Add new group', new_group_path %></small></h1>
+<ul>
+  <% Group.all.each do |group| %>
+      <li>
+        <%= link_to group, group %> <%= link_to 'Edit', edit_group_path(group) %>
+      </li>
+  <% end %>
+</ul>

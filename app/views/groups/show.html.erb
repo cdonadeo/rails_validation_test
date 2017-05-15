@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @group %></h1>
+<h2>Things in group:</h2>
+<div>
+  <% if @group.things.any? %>
+      <ul>
+        <% @group.things.each do |thing| %>
+            <li>
+              <%= link_to thing, thing %>
+            </li>
+        <% end %>
+      </ul>
+  <% else %>
+      There are no things in this group.
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
